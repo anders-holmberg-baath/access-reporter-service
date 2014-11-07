@@ -6,9 +6,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.task.TaskExecutor;
+import org.springframework.integration.channel.ExecutorChannel;
 import org.springframework.integration.config.EnableIntegration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 
@@ -55,5 +57,10 @@ public class Config {
 		taskExecutor.setMaxPoolSize(3);
 		taskExecutor.setQueueCapacity(10);
 		return taskExecutor;
+	}
+
+	@Bean
+	public MessageChannel accessReportChannel() {
+		return new ExecutorChannel(executor());
 	}
 }
