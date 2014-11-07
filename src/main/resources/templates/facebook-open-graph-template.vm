@@ -1,0 +1,4 @@
+The mock service for the Facebook Open Graph API was accessed at ${dateTime}.
+
+The "id" parameter was set to: ${id}
+The "scrape" parameter was set to: ${scrape}
