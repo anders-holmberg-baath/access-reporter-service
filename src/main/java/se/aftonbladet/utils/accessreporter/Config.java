@@ -41,7 +41,7 @@ public class Config {
 		mailSender.setJavaMailProperties(javaMailProperties);
 		mailSender.setHost("smtp.gmail.com");
 		mailSender.setUsername("anders.holmbergbaath@schibsted.se");
-		mailSender.setPassword("rjeclxdszbjakxtt");
+		mailSender.setPassword("password");
 		mailSender.setPort(587);
 		mailSender.setProtocol("smtp");
 
