@@ -1,4 +1,5 @@
-The mock service for the Facebook Open Graph API was accessed at ${dateTime}.
+#* @vtlvariable name="model" type="se.aftonbladet.utils.accessreporter.integration.FacebookOpenGraphModel" *#
+The mock service for the Facebook Open Graph API was accessed at ${model.dateTime}.
 
-The "id" parameter was set to: ${id}
-The "scrape" parameter was set to: ${scrape}
+The "id" parameter was set to: ${model.id}
+The "scrape" parameter was set to: ${model.scrape}

@@ -10,6 +10,8 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
 import java.io.StringWriter;
+import java.util.Collections;
+import java.util.Map;
 
 @Component
 public class OutgoingMailTransformer {
@@ -23,9 +25,12 @@ public class OutgoingMailTransformer {
 		mailMessage.setFrom(payload.getSender());
 		mailMessage.setSubject(payload.getSubject());
 
+		Map<String, ReportModel> context
+				= Collections.singletonMap("model", payload.getReport().getModel());
+
 		StringWriter evaluatedTemplate = new StringWriter();
 		Template template = velocityEngine.getTemplate(payload.getReport().getTemplate());
-		template.merge(new VelocityContext(payload.getReport().getContext()), evaluatedTemplate);
+		template.merge(new VelocityContext(context), evaluatedTemplate);
 		mailMessage.setText(evaluatedTemplate.toString());
 
 		return MessageBuilder.withPayload(mailMessage)

@@ -4,9 +4,9 @@ public class InternalMailRepresentation {
 	private final String address;
 	private final String sender;
 	private final String subject;
-	private final Report report;
+	private final Report<?> report;
 
-	public InternalMailRepresentation(final String address, final String sender, final String subject, final Report report) {
+	public InternalMailRepresentation(final String address, final String sender, final String subject, final Report<?> report) {
 		this.address = address;
 		this.sender = sender;
 		this.subject = subject;

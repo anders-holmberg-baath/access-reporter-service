@@ -1,6 +1,7 @@
 package se.aftonbladet.utils.accessreporter;
 
 import org.apache.velocity.app.VelocityEngine;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 @Configuration
+@EnableAutoConfiguration
 @EnableIntegration
 @ComponentScan("se.aftonbladet.utils")
 @ImportResource("classpath:integration-beans.xml")

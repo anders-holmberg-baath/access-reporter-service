@@ -15,7 +15,7 @@ public class AccessReportService {
 	@Value("${mail.from}")
 	private String sender;
 
-	public Message<InternalMailRepresentation> reportAccess(Message<Report> message) {
+	public Message<InternalMailRepresentation> reportAccess(Message<Report<?>> message) {
 		InternalMailRepresentation mailRepresentation
 				= new InternalMailRepresentation(address, sender, SUBJECT, message.getPayload());
 		return MessageBuilder.withPayload(mailRepresentation)
