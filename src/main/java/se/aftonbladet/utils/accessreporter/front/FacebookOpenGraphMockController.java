@@ -43,7 +43,7 @@ public class FacebookOpenGraphMockController {
 	@Autowired
 	private MessageChannel accessReportChannel;
 
-	@RequestMapping(value = "/", method = RequestMethod.POST)
+	@RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
 	public ResponseEntity<String> openGraphMock(@RequestParam URI id, @RequestParam Boolean scrape) {
 		FacebookOpenGraphModel model = new FacebookOpenGraphModel(
 				FORMATTER.print(DateTime.now(TIMEZONE)),
