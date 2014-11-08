@@ -1,11 +1,11 @@
 package se.aftonbladet.utils.accessreporter.integration;
 
-public class FacebookOpenGraphReport implements Report<FacebookOpenGraphModel> {
+public class FacebookOpenGraphReport implements Report<FacebookOpenGraphReportModel> {
 	private final String service;
 	private final String template;
-	private final FacebookOpenGraphModel model;
+	private final FacebookOpenGraphReportModel model;
 
-	public FacebookOpenGraphReport(final String service, final String template, final FacebookOpenGraphModel model) {
+	public FacebookOpenGraphReport(final String service, final String template, final FacebookOpenGraphReportModel model) {
 		this.service = service;
 		this.template = template;
 		this.model = model;
@@ -22,7 +22,7 @@ public class FacebookOpenGraphReport implements Report<FacebookOpenGraphModel> {
 	}
 
 	@Override
-	public FacebookOpenGraphModel getModel() {
+	public FacebookOpenGraphReportModel getModel() {
 		return model;
 	}
 

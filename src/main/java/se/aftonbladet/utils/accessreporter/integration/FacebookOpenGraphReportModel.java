@@ -1,11 +1,11 @@
 package se.aftonbladet.utils.accessreporter.integration;
 
-public class FacebookOpenGraphModel implements ReportModel {
+public class FacebookOpenGraphReportModel implements ReportModel {
 	private final String dateTime;
 	private final String id;
 	private final String scrape;
 
-	public FacebookOpenGraphModel(final String dateTime, final String id, final String scrape) {
+	public FacebookOpenGraphReportModel(final String dateTime, final String id, final String scrape) {
 		this.dateTime = dateTime;
 		this.id = id;
 		this.scrape = scrape;
@@ -28,7 +28,7 @@ public class FacebookOpenGraphModel implements ReportModel {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 
-		final FacebookOpenGraphModel that = (FacebookOpenGraphModel) o;
+		final FacebookOpenGraphReportModel that = (FacebookOpenGraphReportModel) o;
 
 		if (!dateTime.equals(that.dateTime)) return false;
 		if (!id.equals(that.id)) return false;

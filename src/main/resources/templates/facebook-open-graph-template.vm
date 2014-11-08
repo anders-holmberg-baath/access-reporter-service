@@ -1,4 +1,4 @@
-#* @vtlvariable name="model" type="se.aftonbladet.utils.accessreporter.integration.FacebookOpenGraphModel" *#
+#* @vtlvariable name="model" type="se.aftonbladet.utils.accessreporter.integration.FacebookOpenGraphReportModel" *#
 The mock service for the Facebook Open Graph API was accessed at ${model.dateTime}.
 
 The "id" parameter was set to: ${model.id}

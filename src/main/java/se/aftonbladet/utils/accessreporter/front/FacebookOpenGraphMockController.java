@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import se.aftonbladet.utils.accessreporter.integration.FacebookOpenGraphModel;
+import se.aftonbladet.utils.accessreporter.integration.FacebookOpenGraphReportModel;
 import se.aftonbladet.utils.accessreporter.integration.FacebookOpenGraphReport;
 import se.aftonbladet.utils.accessreporter.integration.Report;
 
@@ -45,7 +45,7 @@ public class FacebookOpenGraphMockController {
 
 	@RequestMapping(value = {"", "/"}, method = RequestMethod.POST)
 	public ResponseEntity<String> openGraphMock(@RequestParam URI id, @RequestParam Boolean scrape) {
-		FacebookOpenGraphModel model = new FacebookOpenGraphModel(
+		FacebookOpenGraphReportModel model = new FacebookOpenGraphReportModel(
 				FORMATTER.print(DateTime.now(TIMEZONE)),
 				id.toASCIIString(),
 				Boolean.toString(scrape)
