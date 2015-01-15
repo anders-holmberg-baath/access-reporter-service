@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 public class AccessReportTransformer implements GenericTransformer<Message<Report<?>>, Message<InternalMailRepresentation>> {
 	private static final String SUBJECT = "AccessReport service report.";
 
-	@Value("${mail.to}")
+	@Value("${mail.headers.to}")
 	private String address;
 
-	@Value("${mail.from}")
+	@Value("${mail.headers.from}")
 	private String sender;
 
 	@Override

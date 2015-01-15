@@ -1,6 +1,7 @@
 package se.aftonbladet.utils.accessreporter;
 
 import org.apache.velocity.app.VelocityEngine;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -27,6 +28,12 @@ import java.util.Properties;
 @EnableIntegration
 @ComponentScan("se.aftonbladet.utils")
 public class Config {
+	@Value("${mail.auth.username}")
+	private String mailUsername;
+
+	@Value("${mail.auth.password}")
+	private String mailPassword;
+
 	@Bean
 	public VelocityEngine velocityEngine() throws IOException {
 		VelocityEngineFactoryBean factoryBean = new VelocityEngineFactoryBean();
@@ -47,8 +54,8 @@ public class Config {
 		JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 		mailSender.setJavaMailProperties(javaMailProperties);
 		mailSender.setHost("smtp.gmail.com");
-		mailSender.setUsername("anders.holmbergbaath@schibsted.se");
-		mailSender.setPassword("password");
+		mailSender.setUsername(mailUsername);
+		mailSender.setPassword(mailPassword);
 		mailSender.setPort(587);
 		mailSender.setProtocol("smtp");
 
