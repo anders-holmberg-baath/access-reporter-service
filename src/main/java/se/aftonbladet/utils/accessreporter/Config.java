@@ -5,15 +5,19 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.integration.channel.ExecutorChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.dsl.IntegrationFlow;
+import org.springframework.integration.dsl.IntegrationFlows;
+import org.springframework.integration.mail.MailSendingMessageHandler;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.ui.velocity.VelocityEngineFactoryBean;
+import se.aftonbladet.utils.accessreporter.integration.AccessReportTransformer;
+import se.aftonbladet.utils.accessreporter.integration.OutgoingMailTransformer;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -22,7 +26,6 @@ import java.util.Properties;
 @EnableAutoConfiguration
 @EnableIntegration
 @ComponentScan("se.aftonbladet.utils")
-@ImportResource("classpath:integration-beans.xml")
 public class Config {
 	@Bean
 	public VelocityEngine velocityEngine() throws IOException {
@@ -64,5 +67,29 @@ public class Config {
 	@Bean
 	public MessageChannel accessReportChannel() {
 		return new ExecutorChannel(executor());
+	}
+
+	@Bean
+	public OutgoingMailTransformer outgoingMailTransformer() {
+		return new OutgoingMailTransformer();
+	}
+
+	@Bean
+	public AccessReportTransformer accessReportTransformer() {
+		return new AccessReportTransformer();
+	}
+
+	@Bean
+	public MailSendingMessageHandler outboundMailMessageHandler() {
+		return new MailSendingMessageHandler(mailSender());
+	}
+
+	@Bean
+	public IntegrationFlow accessReportFlow() {
+		return IntegrationFlows.from(accessReportChannel())
+				.transform(accessReportTransformer())
+				.transform(outgoingMailTransformer())
+				.handle(outboundMailMessageHandler())
+				.get();
 	}
 }

@@ -4,6 +4,8 @@ import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.integration.transformer.GenericTransformer;
+import org.springframework.integration.transformer.Transformer;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
@@ -13,8 +15,7 @@ import java.io.StringWriter;
 import java.util.Collections;
 import java.util.Map;
 
-@Component
-public class OutgoingMailTransformer {
+public class OutgoingMailTransformer implements GenericTransformer<Message<InternalMailRepresentation>, Message<SimpleMailMessage>> {
 	@Autowired
 	private VelocityEngine velocityEngine;
 
