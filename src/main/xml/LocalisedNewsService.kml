@@ -197,30 +197,6 @@
 					</outerBoundaryIs>
 				</Polygon>
 			</Placemark>
-			<Placemark>
-				<styleUrl>#poly-000000-1-76</styleUrl>
-				<name>kalmar</name>
-				<ExtendedData>
-					<Data name='display-name'>
-						<value>Kalmar</value>
-					</Data>
-					<Data name='id'>
-						<value>omni-id-for-kalmar</value>
-					</Data>
-					<Data name='activated'>
-						<value>1</value>
-					</Data>
-				</ExtendedData>
-				<description><![CDATA[display-name: Kalmar<br>id: omni-id-for-kalmar<br>activated: true]]></description>
-				<Polygon>
-					<outerBoundaryIs>
-						<LinearRing>
-							<tessellate>1</tessellate>
-							<coordinates>16.479492199999996,57.07657470000001,0.0 15.5181885,56.653207,0.0 16.517944300000003,56.3469899,0.0 16.8859863,56.6350849,0.0 16.479492199999996,57.07657470000001,0.0</coordinates>
-						</LinearRing>
-					</outerBoundaryIs>
-				</Polygon>
-			</Placemark>
 		</Folder>
 		<Folder>
 			<name>omni_v2.0</name>
